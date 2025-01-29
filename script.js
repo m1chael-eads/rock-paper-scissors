@@ -1,8 +1,6 @@
 console.log('Hello World!')
 humanScore = 0;
 computerScore = 0;
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 function getComputerChoice() {
     number = Math.floor(Math.random() * 3) + 1;
     if (number == 1)
@@ -80,14 +78,15 @@ function playRound(humanChoice, computerChoice) {
         }
     }
 }
-playRound(humanSelection,computerSelection);
-console.log(humanSelection);
-console.log(computerSelection);
-console.log(humanScore);
-console.log(computerScore);
-
 function playGame() {
     for (let i = 0; i < 5; i++) {
-        
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        console.log(humanSelection);
+        console.log(computerSelection);
+        playRound(humanSelection,computerSelection);
     }
+    console.log(humanScore);
+    console.log(computerScore);
 }
+playGame();
