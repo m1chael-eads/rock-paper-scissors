@@ -44,37 +44,43 @@ function playRound(humanChoice, computerChoice) {
     if (humanChoice == 'rock') 
     { 
         if (computerChoice == 'rock') {
-            
+            console.log('Tie!')
         }
         else if (computerChoice == 'paper') {
             computerScore++;
+            console.log('Computer wins!')
         }
         else if (computerChoice == 'scissors') {
             humanScore++;
+            console.log('Human wins!')
         }
     }
     else if (humanChoice == 'paper') 
      { 
         if (computerChoice == 'rock') {
             humanScore++;
+            console.log('Human wins!')
         }
         else if (computerChoice == 'paper') {
-            
+            console.log('Tie!')
         }
         else if (computerChoice == 'scissors') {
             computerScore++;
+            console.log('Computer wins!')
         }
      }
     else if (humanChoice == 'scissors') 
     { 
         if (computerChoice == 'rock') {
             computerScore++;
+            console.log('Computer wins!')
         }
         else if (computerChoice == 'paper') {
             humanScore++;
+            console.log('Human wins!')
         }
         else if (computerChoice == 'scissors') {
-            
+            console.log('Tie!')
         }
     }
 }
@@ -82,8 +88,6 @@ function playGame() {
     for (let i = 0; i < 5; i++) {
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
-        console.log(humanSelection);
-        console.log(computerSelection);
         playRound(humanSelection,computerSelection);
     }
     console.log(humanScore);
