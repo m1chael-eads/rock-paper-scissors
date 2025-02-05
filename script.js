@@ -1,6 +1,34 @@
-console.log('Hello World!')
+
 humanScore = 0;
 computerScore = 0;
+
+
+const rockBtn = document.createElement("button");
+rockBtn.textContent = "Rock";
+const paperBtn = document.createElement("button");
+paperBtn.textContent = "Paper";
+const scissorsBtn = document.createElement("button");
+scissorsBtn.textContent = "Scissors";
+const container = document.querySelector("#container");
+const results = document.createElement("div");
+const gameMessage = document.createElement("h1");
+gameMessage.textContent = "...";
+const runningScore = document.createElement("h2");
+
+container.appendChild(rockBtn);
+container.appendChild(paperBtn);
+container.appendChild(scissorsBtn);
+container.appendChild(results);
+
+results.appendChild(gameMessage);
+results.appendChild(runningScore);
+
+rockBtn.addEventListener("click",() => {playRound("rock",getComputerChoice())});
+paperBtn.addEventListener("click",() => {playRound("paper",getComputerChoice())});
+scissorsBtn.addEventListener("click",() => {playRound("scissors",getComputerChoice())}); 
+
+
+
 function getComputerChoice() {
     number = Math.floor(Math.random() * 3) + 1;
     if (number == 1)
@@ -44,54 +72,62 @@ function playRound(humanChoice, computerChoice) {
         if (humanChoice == 'rock') 
             { 
              if (computerChoice == 'rock') {
-                console.log('Tie!')
+                gameMessage.textContent = "Tie!";
+                updateRunningScore();
                 }
             else if (computerChoice == 'paper') {
                 computerScore++;
-                console.log('Computer wins!')
+                gameMessage.textContent = "Computer Wins!";
+                updateRunningScore();
                 }
             else if (computerChoice == 'scissors') {
                 humanScore++;
-                console.log('Human wins!')
+                gameMessage.textContent = "Human Wins!";
+                updateRunningScore();
                 }
             }
             else if (humanChoice == 'paper') 
              { 
                 if (computerChoice == 'rock') {
                     humanScore++;
-                    console.log('Human wins!')
+                    gameMessage.textContent = "Human Wins!";
+                    updateRunningScore();
                 }
                 else if (computerChoice == 'paper') {
-                    console.log('Tie!')
+                    gameMessage.textContent = "Tie!";
+                    updateRunningScore();
                 }
                 else if (computerChoice == 'scissors') {
                     computerScore++;
-                    console.log('Computer wins!')
+                    gameMessage.textContent = "Computer Wins!";
+                    updateRunningScore();
                 }
              }
             else if (humanChoice == 'scissors') 
             { 
                 if (computerChoice == 'rock') {
                     computerScore++;
-                    console.log('Computer wins!')
+                    gameMessage.textContent = "Computer Wins!";
+                    updateRunningScore();
                 }
                 else if (computerChoice == 'paper') {
                     humanScore++;
-                    console.log('Human wins!')
+                    gameMessage.textContent = "Human Wins!";
+                    updateRunningScore();
                 }
                 else if (computerChoice == 'scissors') {
-                    console.log('Tie!')
+                    gameMessage.textContent = "Tie!";
+                    updateRunningScore();
                 }
             } 
-            console.log(humanScore);
-            console.log(computerScore);
+            
             if (isGameOver()) {
                 if (humanScore > computerScore) 
                 { 
-                    console.log('You win the game!')
+                    gameMessage.textContent = "You Win The Game!";
                 }
                 else {
-                    console.log('Computer wins the game!')
+                    gameMessage.textContent = "Computer Wins The Game!";
                 }
                 humanScore = 0;
                 computerScore = 0;
@@ -107,22 +143,10 @@ function isGameOver() {
     else return false;
 }
 
-const rockBtn = document.createElement("button");
-rockBtn.textContent = "Rock";
-const paperBtn = document.createElement("button");
-paperBtn.textContent = "Paper";
-const scissorsBtn = document.createElement("button");
-scissorsBtn.textContent = "Scissors";
-const container = document.querySelector("#container");
+function updateRunningScore() {
+    runningScore.textContent = `HumanScore: ${humanScore} ComputerScore: ${computerScore}`;
+    return runningScore
+}
 
-container.appendChild(rockBtn);
-container.appendChild(paperBtn);
-container.appendChild(scissorsBtn);
-
-rockBtn.addEventListener("click",() => {playRound("rock",getComputerChoice())});
-paperBtn.addEventListener("click",() => {playRound("paper",getComputerChoice())});
-scissorsBtn.addEventListener("click",() => {playRound("scissors",getComputerChoice())}); 
-
-const results = document.createElement("div");
 
 
